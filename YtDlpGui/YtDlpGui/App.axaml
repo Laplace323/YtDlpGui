@@ -1,0 +1,18 @@
+﻿<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:YtDlpGui"
+             x:Class="YtDlpGui.App"
+             RequestedThemeVariant="Dark">
+             <!-- AppTheme.axamlがダーク基調の固定配色のため、
+                  ネイティブ側のテーマ(タイトルバー等)もDarkに揃えている。
+                  システムの明暗設定に追従させたい場合は"Default"に戻す。 -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="avares://YtDlpGui/Styles/AppTheme.axaml"/>
+    </Application.Styles>
+</Application>

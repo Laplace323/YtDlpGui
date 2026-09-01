@@ -1,0 +1,13 @@
+<Solution>
+  <Project Path="YtDlpGui/YtDlpGui.Android/YtDlpGui.Android.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="YtDlpGui/YtDlpGui.Browser/YtDlpGui.Browser.csproj">
+    <Build Solution="Debug|*" Project="false" />
+  </Project>
+  <Project Path="YtDlpGui/YtDlpGui.Desktop/YtDlpGui.Desktop.csproj" />
+  <Project Path="YtDlpGui/YtDlpGui.iOS/YtDlpGui.iOS.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="YtDlpGui/YtDlpGui/YtDlpGui.csproj" />
+</Solution>

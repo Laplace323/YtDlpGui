@@ -361,3 +361,26 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+# インストーラー成果物
+installer/output/
+Installer/Output/
+**/installer/output/
+**/Installer/Output/
+
+# インストーラー成果物
+installer/output/
+Installer/Output/
+**/installer/output/
+**/Installer/Output/
+
+# インストーラー成果物
+installer/output/
+Installer/Output/
+**/installer/output/
+**/Installer/Output/
+
+# インストーラー成果物
+installer/output/
+Installer/Output/
+**/installer/output/
+**/Installer/Output/

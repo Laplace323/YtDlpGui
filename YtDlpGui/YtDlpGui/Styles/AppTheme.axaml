@@ -1,0 +1,299 @@
+<Styles
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ======================================================
+         YtDlpGui テーマ
+
+         方向性：
+         メディア制作系ツール（DaVinci Resolve/Premiere/OBSなど）の
+         「暗い作業画面＋控えめな差し色」を踏襲しつつ、
+         クリーム×テラコッタや漆黒×ネオンのような
+         ありがちな配色は避け、インク寄りの濃紺グレー＋
+         琥珀（アンバー）のアクセントでまとめている。
+
+         使い方：
+         App.axamlの<Application.Styles>内、FluentThemeの後に
+         <StyleInclude Source="avares://YtDlpGui/Styles/AppTheme.axaml"/>
+         を追加する。
+
+         ★ 修正
+         StyleIncludeで読み込む都合上、ルート要素は
+         ResourceDictionaryではなくStylesである必要がある。
+         色・ブラシの定義はStyles.Resources内へ移動した。
+         ====================================================== -->
+
+    <Styles.Resources>
+        <ResourceDictionary>
+
+            <!-- ==================================================
+                 カラーパレット
+                 ================================================== -->
+
+            <Color x:Key="ColorBase">#15181D</Color>
+            <Color x:Key="ColorSurface">#1D2128</Color>
+            <Color x:Key="ColorSurfaceElevated">#242933</Color>
+            <Color x:Key="ColorBorder">#2E3440</Color>
+
+            <Color x:Key="ColorTextPrimary">#ECEEF1</Color>
+            <Color x:Key="ColorTextMuted">#8A94A6</Color>
+
+            <Color x:Key="ColorAccent">#F2B33D</Color>
+            <Color x:Key="ColorAccentMuted">#8A6A2A</Color>
+
+            <Color x:Key="ColorSuccess">#4FBF8B</Color>
+            <Color x:Key="ColorError">#E8615C</Color>
+            <Color x:Key="ColorWaiting">#5B6472</Color>
+
+
+            <!-- ==================================================
+                 ブラシ
+                 ================================================== -->
+
+            <SolidColorBrush x:Key="BrushBase" Color="{StaticResource ColorBase}"/>
+            <SolidColorBrush x:Key="BrushSurface" Color="{StaticResource ColorSurface}"/>
+            <SolidColorBrush x:Key="BrushSurfaceElevated" Color="{StaticResource ColorSurfaceElevated}"/>
+            <SolidColorBrush x:Key="BrushBorder" Color="{StaticResource ColorBorder}"/>
+
+            <SolidColorBrush x:Key="BrushTextPrimary" Color="{StaticResource ColorTextPrimary}"/>
+            <SolidColorBrush x:Key="BrushTextMuted" Color="{StaticResource ColorTextMuted}"/>
+
+            <SolidColorBrush x:Key="BrushAccent" Color="{StaticResource ColorAccent}"/>
+            <SolidColorBrush x:Key="BrushAccentMuted" Color="{StaticResource ColorAccentMuted}"/>
+
+            <SolidColorBrush x:Key="BrushSuccess" Color="{StaticResource ColorSuccess}"/>
+            <SolidColorBrush x:Key="BrushError" Color="{StaticResource ColorError}"/>
+            <SolidColorBrush x:Key="BrushWaiting" Color="{StaticResource ColorWaiting}"/>
+
+        </ResourceDictionary>
+    </Styles.Resources>
+
+
+    <!-- ==================================================
+         Window / UserControl 共通背景
+         ================================================== -->
+
+    <Style Selector="Window">
+        <Setter Property="Background" Value="{StaticResource BrushBase}"/>
+        <Setter Property="FontFamily" Value="Segoe UI, Yu Gothic UI, sans-serif"/>
+    </Style>
+
+    <Style Selector="UserControl">
+        <Setter Property="Background" Value="{StaticResource BrushBase}"/>
+    </Style>
+
+    <Style Selector="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource BrushTextPrimary}"/>
+    </Style>
+
+
+    <!-- ==================================================
+         見出し用テキスト
+         MainView/SettingsViewの大見出しに
+         Classes="heading" を付けると使える
+         ================================================== -->
+
+    <Style Selector="TextBlock.heading">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="LetterSpacing" Value="0.4"/>
+        <Setter Property="Foreground" Value="{StaticResource BrushTextPrimary}"/>
+    </Style>
+
+    <Style Selector="TextBlock.muted">
+        <Setter Property="Foreground" Value="{StaticResource BrushTextMuted}"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+
+
+    <!-- ==================================================
+         カード（設定画面のグループ枠など）
+         Border に Classes="card" を付けると使える
+         ================================================== -->
+
+    <Style Selector="Border.card">
+        <Setter Property="Background" Value="{StaticResource BrushSurface}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BrushBorder}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="18"/>
+    </Style>
+
+
+    <!-- ==================================================
+         ボタン（既定＝控えめなセカンダリボタン）
+         ================================================== -->
+
+    <Style Selector="Button">
+        <Setter Property="Background" Value="{StaticResource BrushSurfaceElevated}"/>
+        <Setter Property="Foreground" Value="{StaticResource BrushTextPrimary}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BrushBorder}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Padding" Value="14,8"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+
+    <Style Selector="Button:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource BrushBorder}"/>
+    </Style>
+
+    <Style Selector="Button:disabled">
+        <Setter Property="Opacity" Value="0.45"/>
+    </Style>
+
+
+    <!-- ==================================================
+         強調ボタン（主要アクション）
+         Button に Classes="primary" を付けると使える
+         例：ダウンロード開始、キューに追加
+         ================================================== -->
+
+    <Style Selector="Button.primary">
+        <Setter Property="Background" Value="{StaticResource BrushAccent}"/>
+        <Setter Property="Foreground" Value="{StaticResource ColorBase}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+
+    <Style Selector="Button.primary:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource BrushAccentMuted}"/>
+    </Style>
+
+
+    <!-- ==================================================
+         危険ボタン（キャンセル・削除・クリア）
+         Button に Classes="danger" を付けると使える
+         ================================================== -->
+
+    <Style Selector="Button.danger">
+        <Setter Property="Foreground" Value="{StaticResource BrushError}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BrushError}"/>
+    </Style>
+
+    <Style Selector="Button.danger:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource BrushError}"/>
+    </Style>
+
+
+    <!-- ==================================================
+         入力欄
+         ================================================== -->
+
+    <Style Selector="TextBox">
+        <Setter Property="Background" Value="{StaticResource BrushSurface}"/>
+        <Setter Property="Foreground" Value="{StaticResource BrushTextPrimary}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BrushBorder}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Padding" Value="10,7"/>
+        <Setter Property="CaretBrush" Value="{StaticResource BrushAccent}"/>
+        <Setter Property="SelectionBrush" Value="{StaticResource BrushAccentMuted}"/>
+    </Style>
+
+    <Style Selector="TextBox:focus /template/ Border#PART_BorderElement">
+        <Setter Property="BorderBrush" Value="{StaticResource BrushAccent}"/>
+    </Style>
+
+
+    <!-- ==================================================
+         コンボボックス
+         ================================================== -->
+
+    <Style Selector="ComboBox">
+        <Setter Property="Background" Value="{StaticResource BrushSurface}"/>
+        <Setter Property="Foreground" Value="{StaticResource BrushTextPrimary}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BrushBorder}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Padding" Value="10,7"/>
+    </Style>
+
+
+    <!-- ==================================================
+         チェックボックス
+         ================================================== -->
+
+    <Style Selector="CheckBox">
+        <Setter Property="Foreground" Value="{StaticResource BrushTextPrimary}"/>
+    </Style>
+
+
+    <!-- ==================================================
+         プログレスバー
+         全体進捗・個別進捗どちらにも使う
+         ================================================== -->
+
+    <Style Selector="ProgressBar">
+        <Setter Property="Background" Value="{StaticResource BrushSurfaceElevated}"/>
+        <Setter Property="Foreground" Value="{StaticResource BrushAccent}"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="Height" Value="8"/>
+    </Style>
+
+
+    <!-- ==================================================
+         キュー1件分の行（ItemsControl内のBorderに付ける）
+         Classes="queueItem"
+         ================================================== -->
+
+    <Style Selector="Border.queueItem">
+        <Setter Property="Background" Value="{StaticResource BrushSurface}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BrushBorder}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="14,10"/>
+        <Setter Property="Margin" Value="0,0,0,8"/>
+    </Style>
+
+
+    <!-- ==================================================
+         状態バッジ（待機中/ダウンロード中/完了/エラー）
+         TextBlockに Classes="statusBadge" ＋
+         個別に Classes="statusWaiting" 等を追加する
+         （バインドで直接色を切り替えたい場合は
+         　Converterを使う方法もあるが、まずは
+         　クラス切り替えで対応できるようにしている）
+         ================================================== -->
+
+    <Style Selector="Border.statusBadge">
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="10,3"/>
+    </Style>
+
+    <Style Selector="Border.statusBadge.waiting">
+        <Setter Property="Background" Value="{StaticResource BrushWaiting}"/>
+    </Style>
+
+    <Style Selector="Border.statusBadge.downloading">
+        <Setter Property="Background" Value="{StaticResource BrushAccentMuted}"/>
+    </Style>
+
+    <Style Selector="Border.statusBadge.completed">
+        <Setter Property="Background" Value="{StaticResource BrushSuccess}"/>
+    </Style>
+
+    <Style Selector="Border.statusBadge.error">
+        <Setter Property="Background" Value="{StaticResource BrushError}"/>
+    </Style>
+
+    <Style Selector="Border.statusBadge TextBlock">
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{StaticResource ColorBase}"/>
+    </Style>
+
+
+    <!-- ==================================================
+         区切り線
+         ================================================== -->
+
+    <Style Selector="Separator">
+        <Setter Property="Background" Value="{StaticResource BrushBorder}"/>
+    </Style>
+
+    <Style Selector="ScrollViewer">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+</Styles>
